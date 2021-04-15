@@ -1,0 +1,18 @@
+
+all: ./bin/myapp
+
+./bin/myapp: ./obj/foo.o ./obj/goo.o ./obj/myapp.o
+	gcc -o ./bin/myapp ./obj/foo.o ./obj/goo.o ./obj/myapp.o
+
+./obj/foo.o: ./src/foo.c
+	gcc -c ./src/foo.c -I./include -o ./obj/foo.o
+
+./obj/goo.o: ./src/goo.c
+	gcc -c ./src/goo.c -I./include -o ./obj/goo.o
+
+./obj/myapp.o: ./src/myapp.c
+	gcc -c ./src/myapp.c -I./include -o ./obj/myapp.o
+
+clean:
+	rm ./obj/*.o
+	rm ./bin/*
